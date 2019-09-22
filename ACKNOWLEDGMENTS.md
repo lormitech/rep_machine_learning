@@ -6,8 +6,17 @@ Never reinvent the wheel.
 
 ...
 
+*source:* [scikit-learn](https://scikit-learn.org/)
+
+*authors:* Gael Varoquaux
+
+*licence:* 3-Clause BSD
+
+...
+
 *source:*
 
 *authors:*
 
 *licence:*
+
