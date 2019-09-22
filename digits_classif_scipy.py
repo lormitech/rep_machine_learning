@@ -5,6 +5,13 @@
 
 #--
 
+#
+# classification of hand-written digits
+#
+
+
+#--
+
 import matplotlib as mpl
 # configuring the backend for 'matplotlib'
 # note that the function 'use()' must be called
