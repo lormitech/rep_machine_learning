@@ -1,6 +1,6 @@
 
 #
-# last modified: 17.07.19
+# last modified: 23.12.19
 #
 
 #--
@@ -12,6 +12,7 @@
 
 #--
 
+
 import matplotlib as mpl
 # configuring the backend for 'matplotlib'
 # note that the function 'use()' must be called
@@ -19,8 +20,10 @@ import matplotlib as mpl
 mpl.use('TkAgg')
 import matplotlib.pyplot as plt
 
+from sklearn import metrics
+from sklearn import svm
+
 from sklearn import datasets
-from sklearn import svm, metrics
 
 
 #--
@@ -61,33 +64,49 @@ data_img = digits.images.reshape((no_samples, -1))
 # into an 1D array of features (feature vector)
 #
 
+
+# training subset
+train_img = data_img[:no_samples // 2]
+train_lbl = digits.target[:no_samples // 2]
+
+# test subset
+test_img = data_img[no_samples // 2:]
+test_lbl = digits.target[no_samples // 2:]
+
+#--
+
 # initializing a classifier (support vector classifier)
 classifier = svm.SVC(gamma=0.001)
 
 # learning the digits on the first half of the digits
-data_training = data_img[:no_samples // 2]
-data_target = digits.target[:no_samples // 2]
-classifier.fit(data_training, data_target)
+classifier.fit(train_img, train_lbl)
+
+# expected values of the digit on the second half of the digits
+data_expected = test_lbl
 
 # predicting the value of the digit on the second half of the digits
-data_predicted = classifier.predict(data_img[no_samples // 2:])
-
-data_expected = digits.target[no_samples // 2:]
-
-str02 = 'classification report for classifier {0}:\n{1}\n'.format(classifier, \
-        metrics.classification_report(data_expected, data_predicted))
-print(str02)
-str03 = 'confusion matrix:\n{0}'.format(metrics.confusion_matrix(data_expected, data_predicted))
-print(str03)
+data_predicted = classifier.predict(test_img)
 
 # combining images and predicted values ...
 images_and_predictions = list(zip(digits.images[no_samples // 2:], data_predicted))
 
 
+class_report = metrics.classification_report(data_expected, data_predicted)
+str02 = 'classification report for classifier {0}:\n{1}\n'.format(classifier, class_report)
+print(str02)
+
+confusion_mx = metrics.confusion_matrix(data_expected, data_predicted)
+str03 = 'confusion matrix:\n{0}\n'.format(confusion_mx)
+print(str03)
+
+accuracy_score = metrics.accuracy_score(data_expected, data_predicted)
+str04 = 'accuracy score:\n{0}\n'.format(accuracy_score)
+print(str04)
+
 
 #--
 
-# let's consider the first 4 images ...
+# let's consider the first 4 images within the two groups ...
 for index, (image, label) in enumerate(images_and_labels[:4]):
     plt.subplot(2, 4, index + 1)
     plt.axis('off')
