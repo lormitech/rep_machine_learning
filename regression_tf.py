@@ -1,6 +1,6 @@
 
 #
-# last modified: 18.07.19
+# last modified: 04.02.20
 #
 
 #--
@@ -55,9 +55,9 @@ loss = tf.reduce_sum(squared_deltas)
 
 # learning rate
 learning_rate = 0.001
-# initiliazing the optimizer
+# initializing the optimizer
 optimizer = tf.train.GradientDescentOptimizer(learning_rate)
-# defining an opearation to minimize the loss function
+# defining an operation to minimize the loss function
 op_min = optimizer.minimize(loss)
 
 # starting a session

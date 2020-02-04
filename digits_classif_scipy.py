@@ -1,6 +1,6 @@
 
 #
-# last modified: 23.12.19
+# last modified: 03.01.20
 #
 
 #--
@@ -8,7 +8,6 @@
 #
 # classification of hand-written digits
 #
-
 
 #--
 
@@ -75,7 +74,7 @@ test_lbl = digits.target[no_samples // 2:]
 
 #--
 
-# initializing a classifier (support vector classifier)
+# Support Vector Machine (SVM) - initializing a classifier
 classifier = svm.SVC(gamma=0.001)
 
 # learning the digits on the first half of the digits
@@ -90,6 +89,8 @@ data_predicted = classifier.predict(test_img)
 # combining images and predicted values ...
 images_and_predictions = list(zip(digits.images[no_samples // 2:], data_predicted))
 
+
+# evaluating model performance
 
 class_report = metrics.classification_report(data_expected, data_predicted)
 str02 = 'classification report for classifier {0}:\n{1}\n'.format(classifier, class_report)
