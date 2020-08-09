@@ -1,6 +1,6 @@
 
 #
-# last modified: 03.02.20
+# last modified: 24.07.20
 #
 
 #--
@@ -19,6 +19,7 @@ mpl.use('TkAgg')
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn import datasets
+# TensorFlow vers. 1.x
 import tensorflow as tf
 from tensorflow import keras
 
