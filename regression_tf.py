@@ -1,6 +1,6 @@
 
 #
-# last modified: 04.02.20
+# last modified: 03.01.21
 #
 
 #--
@@ -13,6 +13,7 @@
 #--
 
 import numpy as np
+# TensorFlow vers. 1.x
 import tensorflow as tf
 
 
