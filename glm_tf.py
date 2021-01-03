@@ -1,6 +1,6 @@
 
 #
-# last modified: 30.07.20
+# last modified: 03.01.21
 #
 
 #--
@@ -17,6 +17,7 @@ import tensorflow_probability as tfp
 #tf.get_logger().setLevel('INFO')
 tf.get_logger().setLevel('ERROR')
 
+#os.environ['TF_CPP_MIN_LOG_LEVEL'] = '0'
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 
